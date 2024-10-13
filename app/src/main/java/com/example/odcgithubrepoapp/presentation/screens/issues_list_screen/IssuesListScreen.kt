@@ -64,7 +64,7 @@ fun IssuesListScreen(
             topBar = {
                 AppBar(
                     onBackButtonClicked = onClickBack,
-                    title = R.string.details_app_bar_title
+                    title = R.string.show_issues
                 )
             }
         ) { innerPadding ->

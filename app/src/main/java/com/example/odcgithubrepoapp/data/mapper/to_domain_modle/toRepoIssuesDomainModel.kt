@@ -9,12 +9,11 @@ fun RepoIssuesDataModel.toRepoIssuesDomainModel(): RepoIssuesDomainModel {
 
       try {
           return RepoIssuesDomainModel(
-
               id = this.id,
               title = this.title,
               state = this.state,
-              createdAt = this.created_at,
-              description =this.body
+              createdAt = this.created_at ?: "",
+              description =this.body ?: "",
           )
       } catch (e: Exception) {
           Log.e("toRepoIssuesDomainModel", "Error mapping RepoIssuesDataModel to RepoIssuesDomainModel error: ${e.message}")
