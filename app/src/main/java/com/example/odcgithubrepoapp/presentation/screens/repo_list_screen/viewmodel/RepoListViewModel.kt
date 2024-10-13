@@ -3,6 +3,7 @@ package com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.viewm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.odcgithubrepoapp.domain.model.CustomRemoteExceptionDomainModel
+import com.example.odcgithubrepoapp.domain.usecase.FetchGithubReposListCacheUseCase
 import com.example.odcgithubrepoapp.domain.usecase.FetchGithubReposListUseCase
 import com.example.odcgithubrepoapp.presentation.mapper.toCustomExceptionRemoteUiModel
 import com.example.odcgithubrepoapp.presentation.mapper.toGithubReposUiModel
@@ -18,9 +19,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RepoListViewModel @Inject constructor(
-    private val githubReposListUseCase: FetchGithubReposListUseCase
+    private val githubReposListUseCase: FetchGithubReposListUseCase,
+    private val githubReposListCacheUseCase: FetchGithubReposListCacheUseCase
+
 ) : ViewModel() {
-    private val _repoListStateFlow = MutableStateFlow<RepoListUiState>(RepoListUiState(isLoading = true))
+    private val _repoListStateFlow =
+        MutableStateFlow<RepoListUiState>(RepoListUiState(isLoading = true))
     val repoListStateFlow: StateFlow<RepoListUiState> = _repoListStateFlow.asStateFlow()
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -39,12 +43,24 @@ class RepoListViewModel @Inject constructor(
                     isLoading = false,
                     repoList = repoList.map { it.toGithubReposUiModel() }
                 )
-            } catch (e: Exception) {
-                _repoListStateFlow.value = RepoListUiState(
-                    isLoading = false,
-                    isError = true,
-                    customRemoteExceptionUiModel = (e as CustomRemoteExceptionDomainModel).toCustomExceptionRemoteUiModel()
-                )
+            } catch (e: CustomRemoteExceptionDomainModel) {
+                try {
+                    val repoList = githubReposListCacheUseCase()
+                    _repoListStateFlow.value = RepoListUiState(
+                        isLoading = false,
+                        isError = false,
+                        snackBarError = true,
+                        repoList = repoList.map { it.toGithubReposUiModel() },
+                        customRemoteExceptionUiModel = e.toCustomExceptionRemoteUiModel()
+
+                    )
+                } catch (e: CustomRemoteExceptionDomainModel) {
+                    _repoListStateFlow.value = RepoListUiState(
+                        isLoading = false,
+                        isError = true,
+                        customRemoteExceptionUiModel = e.toCustomExceptionRemoteUiModel()
+                    )
+                }
             }
         }
     }

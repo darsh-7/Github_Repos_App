@@ -6,6 +6,7 @@ import com.example.odcgithubrepoapp.presentation.model.CustomRemoteExceptionUiMo
 data class RepoListUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val snackBarError: Boolean = false,
     val customRemoteExceptionUiModel: CustomRemoteExceptionUiModel = CustomRemoteExceptionUiModel.Unknown,
     val repoList: List<GithubReposUiModel> = emptyList()
 )

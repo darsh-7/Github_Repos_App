@@ -1,4 +1,4 @@
-package com.example.odcgithubrepoapp.presentation.common_component.shimmer.details
+package com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.components
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode

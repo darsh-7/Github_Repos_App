@@ -16,10 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.githubreposapp.presentation.common_components.shimmer.issues.AnimateShimmerIssuesList
 import com.example.odcgithubrepoapp.R
 import com.example.odcgithubrepoapp.presentation.common_component.AppBar
 import com.example.odcgithubrepoapp.presentation.common_component.ErrorSection
-import com.example.odcgithubrepoapp.presentation.common_component.shimmer.repo_list.AnimateShimmerRepoList
 import com.example.odcgithubrepoapp.presentation.screens.issues_list_screen.component.IssuesItem
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.RepoListContent
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.model.RepoIssuesUiState
@@ -42,8 +42,6 @@ fun IssuesListScreen(
     }
 
     val repoIssuesUiState by repoIssuesViewModel.repoIssuesStateFlow.collectAsStateWithLifecycle()
-
-
 
     IssuesListContent(
         repoIssuesUiState = repoIssuesUiState,
@@ -73,7 +71,7 @@ fun IssuesListScreen(
 
             when {
                 repoIssuesUiState.isLoading -> {
-                    AnimateShimmerRepoList(
+                    AnimateShimmerIssuesList(
                         innerPadding = innerPadding
                     )
                 }

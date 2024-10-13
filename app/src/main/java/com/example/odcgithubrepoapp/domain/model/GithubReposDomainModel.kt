@@ -6,5 +6,5 @@ data class GithubReposDomainModel(
     val name: String,
     val ownerName: String,
     val description:String,
-    val stars:Int
+    val stars:String
 )

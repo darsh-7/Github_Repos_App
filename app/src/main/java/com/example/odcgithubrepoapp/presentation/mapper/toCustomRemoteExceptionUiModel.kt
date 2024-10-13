@@ -1,7 +1,6 @@
 package com.example.odcgithubrepoapp.presentation.mapper
 
 import android.util.Log
-import com.example.odcgithubrepoapp.data.mapper.toCustomRemoteExceptionDomainModel
 import com.example.odcgithubrepoapp.domain.model.CustomRemoteExceptionDomainModel
 import com.example.odcgithubrepoapp.presentation.model.CustomRemoteExceptionUiModel
 
@@ -15,5 +14,8 @@ fun CustomRemoteExceptionDomainModel.toCustomExceptionRemoteUiModel(): CustomRem
         is CustomRemoteExceptionDomainModel.AccessDeniedRemoteException -> CustomRemoteExceptionUiModel.ServiceUnreachable
         is CustomRemoteExceptionDomainModel.ServiceNotFoundRemoteException -> CustomRemoteExceptionUiModel.ServiceUnreachable
         is CustomRemoteExceptionDomainModel.UnknownRemoteException -> CustomRemoteExceptionUiModel.Unknown
+        else -> {
+            CustomRemoteExceptionUiModel.Unknown
+        }
     }
 }

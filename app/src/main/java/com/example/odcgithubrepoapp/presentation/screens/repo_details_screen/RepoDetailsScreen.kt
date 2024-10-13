@@ -34,7 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.odcgithubrepoapp.presentation.common_component.shimmer.details.AnimateShimmerDetails
+import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.components.AnimateShimmerDetails
 import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.preview_data.fakeRepoDetailsUiModel
 import com.example.odcgithubrepoapp.R
 import com.example.odcgithubrepoapp.presentation.common_component.AppBar

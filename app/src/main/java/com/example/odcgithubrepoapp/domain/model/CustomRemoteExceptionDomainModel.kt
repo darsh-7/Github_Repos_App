@@ -20,8 +20,15 @@ sealed class CustomRemoteExceptionDomainModel: Exception() {
     data object ServiceNotFoundRemoteException: CustomRemoteExceptionDomainModel() {
         private fun readResolve(): Any = ServiceNotFoundRemoteException
     }
+    data object BadRequestRemoteException: CustomRemoteExceptionDomainModel() {
+        private fun readResolve(): Any = BadRequestRemoteException
+    }
 
     data object UnknownRemoteException: CustomRemoteExceptionDomainModel() {
         private fun readResolve(): Any = UnknownRemoteException
     }
+    data object ServiceNotFoundLocalException: CustomRemoteExceptionDomainModel() {
+        private fun readResolve(): Any = ServiceNotFoundLocalException
+    }
+
 }

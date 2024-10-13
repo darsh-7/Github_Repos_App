@@ -6,6 +6,8 @@ import com.example.odcgithubrepoapp.domain.model.RepoDetailsDomainModel
 
 interface GithubReposRepository {
     suspend fun fetchReposList(): List<GithubReposDomainModel>
+    suspend fun fetchReposListCash(): List<GithubReposDomainModel>
+
     suspend fun fetchRepoDetails(ownerName: String, name: String): RepoDetailsDomainModel
     suspend fun fetchRepoIssues(ownerName: String, name: String) : List<RepoIssuesDomainModel>
 }
