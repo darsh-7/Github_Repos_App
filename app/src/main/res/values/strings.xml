@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ODC Github Repo App</string>
+
+    // details screen
+    <string name="details_app_bar_title">Details</string>
+    <string name="details_app_bar_back_arrow_description">back arrow button</string>
+    <string name="show_issues">Show Issues</string>
+    <string name="accessbility_details_your_avatar_image">your avatar Image</string>
+
+    // errorSectiom
+    <string name="something_went_wrong">Something Went Wrong..</string>
+    <string name="alien_blocking_your_signal">An alien is probably blocking your signal.</string>
+    <string name="retry">RETRY</string>
+
+    // issues screen
+    <string name="issues_app_bar_title">Issues</string>
+    <string name="issue_created_at">Created At:</string>
+    <string name="column">:</string>
+
+    // exception messages
+    <string name="error_server_error">"Error Server "</string>
+    <string name="no_internet_connection_exception_message">No Internet Connection</string>
+    <string name="timeout_exception_message">Timeout, Check Your Internet Connection</string>
+    <string name="network_exception_meesage">Network Error</string>
+    <string name="service_unreachable_exception_message">Our service is not reachable at the moment</string>
+    <string name="news_not_found_message">Can\'t find news for that subject.</string>
+    <string name="unknown_exception_message">We are working on this issue</string>
+    <string name="back_arrow">back arrow</string>
+</resources>
