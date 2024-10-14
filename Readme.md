@@ -3,7 +3,7 @@
 **Github Explorer** is a sleek Android application built with Kotlin that allows users to effortlessly explore Github repositories, dive into their details, and track related issues.  Leveraging the power of the Github API, the app delivers a seamless and informative user experience.
 
 
-[![GITHUB API](https://img.shields.io/badge/GITHUB_API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![GITHUB API](https://img.shields.io/badge/GITHUB_-API-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.8.0-blue.svg)](http://kotlinlang.org)
 [![Hilt](https://img.shields.io/badge/Hilt-2.44-orange)](https://developer.android.com/training/dependency-injection/hilt-android)
 [![Retrofit](https://img.shields.io/badge/Retrofit-2.9.0-red)](https://square.github.io/retrofit/)
