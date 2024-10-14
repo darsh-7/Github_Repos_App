@@ -36,6 +36,9 @@ class RepoListViewModel @Inject constructor(
     }
 
     fun requestGithubRepoList() {
+        _repoListStateFlow.value = RepoListUiState(
+            isLoading = true,
+        )
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             try {
                 val repoList = githubReposListUseCase()
