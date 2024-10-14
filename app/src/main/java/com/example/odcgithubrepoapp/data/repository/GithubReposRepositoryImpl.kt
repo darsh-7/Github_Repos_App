@@ -12,6 +12,7 @@ import com.example.odcgithubrepoapp.domain.model.CustomRemoteExceptionDomainMode
 import com.example.odcgithubrepoapp.domain.model.GithubReposDomainModel
 import com.example.odcgithubrepoapp.domain.model.RepoDetailsDomainModel
 import com.example.odcgithubrepoapp.domain.repository.GithubReposRepository
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GithubReposRepositoryImpl @Inject constructor(
@@ -29,17 +30,30 @@ class GithubReposRepositoryImpl @Inject constructor(
         }
         return respond.map {
             it.toGithubReposDomainModel()
+        }.also {
+            if (it.isNotEmpty()) {
+              githubLocalDataSource.saveIsFirstTimeEnterApp(false)
+            } else {
+                throw CustomRemoteExceptionDomainModel.ServiceNotFoundRemoteException
+            }
+
         }
     }
 
     override suspend fun fetchReposListCash(): List<GithubReposDomainModel> {
+        if (!githubLocalDataSource.readIsFirstTimeEnterApp()) {
             val respond: List<ReposListEntity> = githubLocalDataSource.getTrendingList()
-            if (respond.isNotEmpty()) {
-                return respond.map {
-                    it.toGithubReposDomainModel()
+            return respond.map {
+                it.toGithubReposDomainModel()
+            }.also {
+                if (it.isEmpty()) {
+                   githubLocalDataSource.saveIsFirstTimeEnterApp(true)
+                    throw CustomRemoteExceptionDomainModel.ServiceNotFoundLocalException
                 }
             }
-       throw CustomRemoteExceptionDomainModel.ServiceNotFoundLocalException
+        } else {
+            throw CustomRemoteExceptionDomainModel.ServiceNotFoundLocalException
+        }
     }
 
     override suspend fun fetchRepoDetails(ownerName: String, name: String): RepoDetailsDomainModel {

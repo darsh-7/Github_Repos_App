@@ -16,6 +16,5 @@ class Constants {
         const val OWNER_KEY = "owner"
         const val REPO_NAME_KEY = "repo"
 
-
     }
 }

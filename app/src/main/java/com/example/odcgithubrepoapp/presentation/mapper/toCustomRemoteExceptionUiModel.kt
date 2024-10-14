@@ -13,6 +13,7 @@ fun CustomRemoteExceptionDomainModel.toCustomExceptionRemoteUiModel(): CustomRem
         is CustomRemoteExceptionDomainModel.ServiceUnavailableRemoteException -> CustomRemoteExceptionUiModel.ServiceUnreachable
         is CustomRemoteExceptionDomainModel.AccessDeniedRemoteException -> CustomRemoteExceptionUiModel.ServiceUnreachable
         is CustomRemoteExceptionDomainModel.ServiceNotFoundRemoteException -> CustomRemoteExceptionUiModel.ServiceUnreachable
+        is CustomRemoteExceptionDomainModel.ServiceNotFoundLocalException -> CustomRemoteExceptionUiModel.NoInternetConnection
         is CustomRemoteExceptionDomainModel.UnknownRemoteException -> CustomRemoteExceptionUiModel.Unknown
         else -> {
             CustomRemoteExceptionUiModel.Unknown

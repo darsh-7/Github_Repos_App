@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ODC Github Repo App</string>
+    <string name="app_name">Github Repo App</string>
 
     // details screen
     <string name="details_app_bar_title">Details</string>
@@ -7,7 +7,7 @@
     <string name="show_issues">Show Issues</string>
     <string name="accessbility_details_your_avatar_image">your avatar Image</string>
 
-    // errorSectiom
+    // errorSection
     <string name="something_went_wrong">Something Went Wrong..</string>
     <string name="alien_blocking_your_signal">An alien is probably blocking your signal.</string>
     <string name="retry">RETRY</string>

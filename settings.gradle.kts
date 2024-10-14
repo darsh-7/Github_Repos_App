@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ODC Github Repo App"
+rootProject.name = "Github Repo App"
 include(":app")
  

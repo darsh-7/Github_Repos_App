@@ -1,5 +1,4 @@
-
-import android.util.Log
+package com.example.odcgithubrepoapp.presentation.screens.issues_list_screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -21,10 +20,12 @@ import com.example.odcgithubrepoapp.R
 import com.example.odcgithubrepoapp.presentation.common_component.AppBar
 import com.example.odcgithubrepoapp.presentation.common_component.ErrorSection
 import com.example.odcgithubrepoapp.presentation.screens.issues_list_screen.component.IssuesItem
-import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.RepoListContent
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.model.RepoIssuesUiState
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.viewmodel.RepoIssuesViewModel
 import com.example.odcgithubrepoapp.presentation.theme.ODCGithubRepoAppTheme
+import fakeRepoIssuesErrorUiState
+import fakeRepoIssuesLoadingUiState
+import fakeRepoIssuesUiState
 
 
 @Composable
@@ -38,13 +39,15 @@ fun IssuesListScreen(
 
     LaunchedEffect(Unit) {
         repoIssuesViewModel.requestRepoIssues(ownerName = owner, name = name)
-        Log.i("IssuesListScreen", "requestRepoIssues from the model ownerName: $owner, name: $name")
     }
 
     val repoIssuesUiState by repoIssuesViewModel.repoIssuesStateFlow.collectAsStateWithLifecycle()
 
     IssuesListContent(
         repoIssuesUiState = repoIssuesUiState,
+        onRefreshButtonClicked = {
+            repoIssuesViewModel.requestRepoIssues(ownerName = owner, name = name)
+        },
         onClickBack = onClickBack
     )
     }
@@ -55,6 +58,7 @@ fun IssuesListScreen(
     fun IssuesListContent(
     repoIssuesUiState: RepoIssuesUiState,
         modifier: Modifier = Modifier,
+        onRefreshButtonClicked: () -> Unit ,
         onClickBack: () -> Unit,
     ) {
         Scaffold(
@@ -80,7 +84,7 @@ fun IssuesListScreen(
                         innerPadding = innerPadding,
                         customErrorExceptionUiModel = repoIssuesUiState.customRemoteExceptionUiModel,
                         onRefreshButtonClicked = {
-                           // onRefreshButtonClicked()
+                            onRefreshButtonClicked()
                         }
                     )
                 }
@@ -106,6 +110,7 @@ private fun PreviewRepoIssuesScreen() {
     ODCGithubRepoAppTheme {
         IssuesListContent(
             repoIssuesUiState = fakeRepoIssuesUiState,
+            onRefreshButtonClicked = {},
             onClickBack = {}
         )
     }
@@ -115,10 +120,10 @@ private fun PreviewRepoIssuesScreen() {
 @Composable
 private fun PreviewRepoIssuesScreenLoading() {
     ODCGithubRepoAppTheme {
-        RepoListContent(
-            repoListUiSate = fakeRepoIssuesLoadingUiState ,
+        IssuesListContent(
+            repoIssuesUiState = fakeRepoIssuesLoadingUiState ,
             onRefreshButtonClicked = {},
-            onRepoItemClicked = {_,_ -> }
+            onClickBack = {},
         )
     }
 }
@@ -127,10 +132,10 @@ private fun PreviewRepoIssuesScreenLoading() {
 @Composable
 private fun PreviewRepoIssuesScreenError() {
     ODCGithubRepoAppTheme {
-        RepoListContent(
-            repoListUiSate = fakeRepoIssuesErrorUiState,
+        IssuesListContent(
+            repoIssuesUiState = fakeRepoIssuesErrorUiState,
             onRefreshButtonClicked = {},
-            onRepoItemClicked = {_,_ -> }
+            onClickBack = {},
         )
     }
 }

@@ -2,7 +2,6 @@
 import com.example.odcgithubrepoapp.presentation.model.CustomRemoteExceptionUiModel
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.model.RepoIssuesUiModel
 import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.model.RepoIssuesUiState
-import com.example.odcgithubrepoapp.presentation.screens.repo_list_screen.model.RepoListUiState
 
 val fakeRepoIssuesUiModelList = listOf(
     RepoIssuesUiModel(
@@ -47,10 +46,10 @@ val fakeRepoIssuesUiState = RepoIssuesUiState(
     isError = false,
     repoIssues = fakeRepoIssuesUiModelList
 )
-val fakeRepoIssuesLoadingUiState = RepoListUiState(
+val fakeRepoIssuesLoadingUiState = RepoIssuesUiState(
     isLoading = true,
 )
-val fakeRepoIssuesErrorUiState = RepoListUiState(
+val fakeRepoIssuesErrorUiState = RepoIssuesUiState(
     isLoading = false,
     isError = true,
     customRemoteExceptionUiModel = CustomRemoteExceptionUiModel.NoInternetConnection

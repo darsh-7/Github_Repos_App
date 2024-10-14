@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GithubLocalDataSource @Inject constructor(
     private val repoListDao: RepoListDao,
-   // private val dataStorePreference: DataStorePreference,
+   private val dataStorePreference: DataStorePreference,
 ) {
     suspend fun getTrendingList(): List<ReposListEntity> {
         return repoListDao.getReposList()
@@ -16,5 +16,11 @@ class GithubLocalDataSource @Inject constructor(
     suspend fun insertRepos(repoList: List<ReposListEntity>) {
         repoListDao.insertReposList(repoList)
     }
+
+    suspend fun saveIsFirstTimeEnterApp(isFirstTime: Boolean) {
+        dataStorePreference.saveIsFirstTimeEnterApp(isFirstTime)
+    }
+
+    suspend fun readIsFirstTimeEnterApp() = dataStorePreference.readIsFirstTimeEnterApp()
 
 }

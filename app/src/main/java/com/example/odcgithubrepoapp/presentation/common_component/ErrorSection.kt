@@ -31,6 +31,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.odcgithubrepoapp.R
+
 import com.example.odcgithubrepoapp.presentation.model.CustomRemoteExceptionUiModel
 import com.example.odcgithubrepoapp.presentation.theme.LightGray
 import com.example.odcgithubrepoapp.presentation.theme.LightGreen

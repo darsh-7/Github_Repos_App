@@ -37,19 +37,14 @@ class RepoIssuesViewModel @Inject constructor(
     ) {
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             try {
-                Log.i("IssuesViewModel", "requestRepoIssues starting with ownerName: $ownerName, name: $name")
-
-
                 val repoIssues = fetchReposIssuesUseCase(ownerName = ownerName, name = name)
                 Log.i("IssuesViewModel", "repoIssues done with  ${_repoIssuesStateFlow.value.toString()}.")
                 _repoIssuesStateFlow.value = RepoIssuesUiState(
                     isLoading = false,
                     repoIssues = repoIssues.map { it.toRepoIssuesUiModel() }
                 )
-                Log.i("IssuesViewModel", "requestRepoIssues done with _repoIssuesStateFlow.value: ${_repoIssuesStateFlow.value.toString()}.")
-
             } catch (e: Exception) {
-                Log.i("IssuesViewModel", "requestRepoIssues Exception : ${e.message}")
+                Log.e("IssuesViewModel", "requestRepoIssues Exception : ${e.message}")
 
                 _repoIssuesStateFlow.value = RepoIssuesUiState(
                     isLoading = false,

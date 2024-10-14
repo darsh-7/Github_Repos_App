@@ -34,14 +34,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.components.AnimateShimmerDetails
-import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.preview_data.fakeRepoDetailsUiModel
 import com.example.odcgithubrepoapp.R
+
 import com.example.odcgithubrepoapp.presentation.common_component.AppBar
 import com.example.odcgithubrepoapp.presentation.common_component.ErrorSection
+import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.components.AnimateShimmerDetails
 import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.components.DetailsItem
 import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.model.RepoDetailsUiModel
 import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.model.RepoDetailsUiState
+import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.preview_data.fakeRepoDetailsUiModel
 import com.example.odcgithubrepoapp.presentation.screens.repo_details_screen.viewmodel.RepoDetailsViewModel
 import com.example.odcgithubrepoapp.presentation.theme.ODCGithubRepoAppTheme
 
@@ -202,6 +203,18 @@ fun DetailsContent(
 @Preview(showBackground = true)
 @Composable
 fun DetailsScreenPreview() {
+    ODCGithubRepoAppTheme {
+        DetailsContent(
+            innerPadding = PaddingValues(12.dp),
+            repoDetailsUiModel = fakeRepoDetailsUiModel,
+            onShowIssuesClicked = {},
+        )
+    }
+}
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun DetailsScreenShimmerPreview() {
     ODCGithubRepoAppTheme {
         DetailsContent(
             innerPadding = PaddingValues(12.dp),

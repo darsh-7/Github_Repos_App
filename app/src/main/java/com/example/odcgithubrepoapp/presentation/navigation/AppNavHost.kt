@@ -1,6 +1,6 @@
 package com.example.odcgithubrepoapp.presentation.navigation
 
-import IssuesListScreen
+import com.example.odcgithubrepoapp.presentation.screens.issues_list_screen.IssuesListScreen
 import RepoDetailsScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType

@@ -34,7 +34,6 @@ fun IssuesItem(
     repoIssuesUiModel: RepoIssuesUiModel
 
 ) {
-    val imageCrossFadeAnimationDuration = 1000
     Row(
         modifier = Modifier
             .fillMaxWidth()
