@@ -26,6 +26,7 @@
   <img src="https://github.com/darsh-7/Github_Repos_App/blob/master/screen_shots/Screenshot_5.png?raw=true" width="250" hspace="20" alt="Repo issues screen Shimmer">
 
   <img src="https://github.com/darsh-7/Github_Repos_App/blob/master/screen_shots/Screenshot_7.png?raw=true" width="250" hspace="20" alt="Error screen">
+  <img src="https://github.com/darsh-7/Github_Repos_App/blob/master/screen_shots/Screenshot_8.png?raw=true" width="250" hspace="20" alt="Repos main screen with cached deta">
   
 </p>
 
